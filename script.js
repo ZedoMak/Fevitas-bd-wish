@@ -180,3 +180,63 @@ document.head.appendChild(style);
 setInterval(() => {
     createHearts(3);
 }, 2000);
+
+// Add these to your existing script.js
+
+// Password Page Functionality (for index.html)
+if (window.location.pathname.includes("index.html") || window.location.pathname === "/") {
+    function checkPassword() {
+        const passwords = ["fevita", "love", "forever", "birthday", "amor"]; // Add more if needed
+        const input = document.getElementById("passwordInput").value.toLowerCase();
+        
+        if (passwords.includes(input)) {
+            // Correct password - redirect to main page
+            window.location.href = "main.html";
+        } else {
+            // Wrong password - shake animation
+            const container = document.querySelector(".password-container");
+            container.style.animation = "shake 0.5s";
+            setTimeout(() => {
+                container.style.animation = "";
+            }, 500);
+            
+            // Confetti "fail"
+            confetti({
+                particleCount: 50,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff0000', '#880000'],
+                shapes: ['square']
+            });
+        }
+    }
+    
+    function showHint() {
+        const hint = document.getElementById("hiddenHint");
+        hint.style.display = hint.style.display === "block" ? "none" : "block";
+    }
+    
+    // Allow Enter key to submit
+    document.getElementById("passwordInput").addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            checkPassword();
+        }
+    });
+}
+
+// For main.html - initialize collage hover effects
+if (document.querySelector('.collage-item')) {
+    const collageItems = document.querySelectorAll('.collage-item');
+    
+    collageItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.style.transform = 'scale(1.03)';
+            item.style.boxShadow = '0 10px 30px rgba(255, 102, 179, 0.6)';
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'scale(1)';
+            item.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+        });
+    });
+}

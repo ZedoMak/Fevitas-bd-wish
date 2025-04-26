@@ -349,3 +349,139 @@ h1 {
         font-size: 1.1rem;
     }
 }
+
+/* Add these new styles to your existing CSS */
+
+/* Password Page Styles */
+.password-container {
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 102, 179, 0.3);
+    text-align: center;
+}
+
+.password-title {
+    font-size: 2.5rem;
+    color: #ff3385;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px rgba(255, 102, 179, 0.5);
+}
+
+.password-input {
+    width: 100%;
+    padding: 15px;
+    margin: 20px 0;
+    border: 2px solid #ff99cc;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.password-input:focus {
+    border-color: #ff3385;
+    box-shadow: 0 0 15px rgba(255, 102, 179, 0.5);
+}
+
+.password-btn {
+    background: linear-gradient(45deg, #ff66b3, #ff3385);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(255, 102, 179, 0.4);
+}
+
+.password-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 102, 179, 0.6);
+}
+
+.hint {
+    margin-top: 20px;
+    font-style: italic;
+    color: #9966cc;
+    cursor: pointer;
+}
+
+.hidden-hint {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+}
+
+/* Photo Collage Styles */
+.collage-container {
+    max-width: 900px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.collage-row {
+    display: flex;
+    gap: 10px;
+    height: 200px;
+}
+
+.collage-item {
+    flex: 1;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.collage-item.big {
+    flex: 2;
+}
+
+.collage-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(255, 102, 179, 0.4);
+}
+
+/* Shake Animation for Wrong Password */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .collage-row {
+        height: 150px;
+    }
+    
+    .password-container {
+        margin: 50px auto;
+        padding: 20px;
+    }
+    
+    .password-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .collage-row {
+        height: 100px;
+    }
+    
+    .password-container {
+        margin: 30px 15px;
+        padding: 15px;
+    }
+}

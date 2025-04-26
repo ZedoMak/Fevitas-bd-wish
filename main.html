@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Fevita! ✨</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday Fevita! ✨</h1>
+        
+        <!-- Photo Collage -->
+        <div class="collage-container">
+            <div class="collage-row">
+                <div class="collage-item big" style="background-image: url('assets/fevita1.jpg');"></div>
+                <div class="collage-item" style="background-image: url('assets/fevita2.jpg');"></div>
+            </div>
+            <div class="collage-row">
+                <div class="collage-item" style="background-image: url('assets/fevita3.jpg');"></div>
+                <div class="collage-item big" style="background-image: url('assets/fevita4.jpg');"></div>
+                <div class="collage-item" style="background-image: url('assets/fevita5.jpg');"></div>
+            </div>
+            <div class="collage-row">
+                <div class="collage-item" style="background-image: url('assets/fevita6.jpg');"></div>
+                <div class="collage-item big" style="background-image: url('assets/fevita7.jpg');"></div>
+            </div>
+        </div>
+
+        <!-- Slideshow (now as a secondary feature) -->
+        <div class="slideshow-container">
+            <div class="slides fade">
+                <img src="assets/fevita1.jpg" alt="Fevita" class="slide-image">
+            </div>
+            <div class="slides fade">
+                <img src="assets/fevita2.jpg" alt="Fevita" class="slide-image">
+            </div>
+            <div class="slides fade">
+                <img src="assets/fevita3.jpg" alt="Fevita" class="slide-image">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+        </div>
+        <br>
+        <div class="dots-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+
+        <div class="poem">
+            <p>To the most beautiful soul I know,</p>
+            <p>May your birthday be as radiant as your smile,</p>
+            <p>As warm as your heart,</p>
+            <p>And as magical as your presence in my life. ✨</p>
+        </div>
+
+        <!-- Gift Box -->
+        <div class="gift-container">
+            <img src="assets/gift-box.png" alt="Gift Box" class="gift-box" id="giftBox">
+            <div class="love-message" id="loveMessage">I LOVE YOU</div>
+        </div>
+
+        <button class="confetti-btn">Shower Me With Love! 🎉</button>
+        
+        <!-- Floating Hearts -->
+        <div class="hearts-container"></div>
+    </div>
+
+    <!-- Confetti JS -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -3,60 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Fevita! ✨</title>
+    <title>For Your Eyes Only ✨</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .password-container {
+            max-width: 500px;
+            margin: 100px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 102, 179, 0.3);
+            text-align: center;
+        }
+        
+        .password-title {
+            font-size: 2.5rem;
+            color: #ff3385;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(255, 102, 179, 0.5);
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 15px;
+            margin: 20px 0;
+            border: 2px solid #ff99cc;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .password-input:focus {
+            border-color: #ff3385;
+            box-shadow: 0 0 15px rgba(255, 102, 179, 0.5);
+        }
+        
+        .password-btn {
+            background: linear-gradient(45deg, #ff66b3, #ff3385);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 102, 179, 0.4);
+        }
+        
+        .password-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 102, 179, 0.6);
+        }
+        
+        .hint {
+            margin-top: 20px;
+            font-style: italic;
+            color: #9966cc;
+            cursor: pointer;
+        }
+        
+        .hidden-hint {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Happy Birthday Fevita! ✨</h1>
+    <div class="password-container">
+        <h1 class="password-title">Enter the Magic Word</h1>
+        <p>To unlock Fevita's special birthday surprise 🎀</p>
         
-        <!-- Slideshow Container -->
-        <div class="slideshow-container">
-            <div class="slides fade">
-                <img src="assets/fevita4.jpg" alt="Fevita" class="slide-image">
-            </div>
-            <div class="slides fade">
-                <img src="assets/fevita2.jpg" alt="Fevita" class="slide-image">
-            </div>
-            <div class="slides fade">
-                <img src="assets/fevita3.jpg" alt="Fevita" class="slide-image">
-            </div>
-            <div class="slides fade">
-                <img src="assets/fevita5.jpg" alt="Fevita" class="slide-image">
-            </div>
-            <a class="prev" onclick="plusSlides(-1)">❮</a>
-            <a class="next" onclick="plusSlides(1)">❯</a>
-        </div>
-        <br>
-        <div class="dots-container">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-            <span class="dot" onclick="currentSlide(4)"></span>
-        </div>
-
-        <div class="poem">
-            <p>To the most beautiful soul I know,</p>
-            <p>May your birthday be as radiant as your smile,</p>
-            <p>As warm as your heart,</p>
-            <p>And as magical as your presence in my life. ✨</p>
-        </div>
-
-        <!-- Gift Box -->
-        <div class="gift-container">
-            <img src="assets/gift-box.jpg" alt="Gift Box" class="gift-box" id="giftBox">
-            <div class="love-message" id="loveMessage">I LOVE YOU</div>
-        </div>
-
-        <button class="confetti-btn">Shower Me With Love! 🎉</button>
+        <input type="password" id="passwordInput" class="password-input" placeholder="Hint: It's how you feel about her">
+        <button onclick="checkPassword()" class="password-btn">Unlock the Magic ✨</button>
         
-        <!-- Floating Hearts -->
-        <div class="hearts-container"></div>
+        <div class="hint" onclick="showHint()">Need a hint?</div>
+        <div id="hiddenHint" class="hidden-hint">Try "forever" or "love" or her name</div>
     </div>
 
-    <!-- Confetti JS -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+        function checkPassword() {
+            const passwords = ["fevita", "love", "forever", "birthday", "amor"]; // Add more if needed
+            const input = document.getElementById("passwordInput").value.toLowerCase();
+            
+            if (passwords.includes(input)) {
+                // Correct password - redirect to main page
+                window.location.href = "main.html";
+            } else {
+                // Wrong password - shake animation
+                const container = document.querySelector(".password-container");
+                container.style.animation = "shake 0.5s";
+                setTimeout(() => {
+                    container.style.animation = "";
+                }, 500);
+                
+                // Confetti "fail"
+                confetti({
+                    particleCount: 50,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#ff0000', '#880000'],
+                    shapes: ['square']
+                });
+            }
+        }
+        
+        function showHint() {
+            const hint = document.getElementById("hiddenHint");
+            hint.style.display = hint.style.display === "block" ? "none" : "block";
+        }
+        
+        // Allow Enter key to submit
+        document.getElementById("passwordInput").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+    </script>
+    
+    <style>
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+    </style>
 </body>
 </html>
