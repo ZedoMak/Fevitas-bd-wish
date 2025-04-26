@@ -5,16 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Fevita! ✨</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <h1>Happy Birthday Fevita! ✨</h1>
     
-    <div class="photo-grid">
-        <!-- Replace these with her images later -->
-        <img src="images/photo_2025-04-18_23-58-47.jpg" alt="Fevita" class="glow-image">
-        <img src="images/photo_2025-04-26_08-58-17.jpg" alt="Fevita" class="glow-image">
-        <img src="images/photo_2025-04-26_08-58-29.jpg" alt="Fevita" class="glow-image">
-        <img src="images/photo_2025-04-26_08-58-30.jpg" alt="Fevita" class="glow-image">
+    <!-- Slideshow Container -->
+    <div class="slideshow-container">
+        <div class="slides fade">
+            <img src="images/fevita1.jpg" alt="Fevita" class="slide-image">
+        </div>
+        <div class="slides fade">
+            <img src="images/fevita2.jpg" alt="Fevita" class="slide-image">
+        </div>
+        <div class="slides fade">
+            <img src="images/fevita3.jpg" alt="Fevita" class="slide-image">
+        </div>
+        <div class="slides fade">
+            <img src="images/fevita4.jpg" alt="Fevita" class="slide-image">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+    <br>
+    <div class="dots-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
     </div>
 
     <div class="poem">
@@ -24,8 +42,15 @@
         <p>Like stars that dance in the velvet night. ✨</p>
     </div>
 
+    <!-- Gift Box -->
+    <div class="gift-container">
+        <img src="images/gift-box.jpg" alt="Gift Box" class="gift-box" id="giftBox">
+        <div class="love-message" id="loveMessage">I LOVE YOU</div>
+    </div>
+
     <button class="confetti-btn">Click for Confetti! 🎉</button>
 
+    <!-- Confetti JS -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
 </body>

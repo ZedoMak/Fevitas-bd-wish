@@ -5,7 +5,7 @@ body {
     background-size: 300% 300%;
     animation: gradientBG 10s ease infinite;
     margin: 0;
-    padding: 0;
+    padding: 20px;
     color: #5a3d7a;
     text-align: center;
     overflow-x: hidden;
@@ -30,32 +30,83 @@ h1 {
     to { text-shadow: 0 0 15px #ff99cc, 0 0 25px #ff99cc; }
 }
 
-/* Photo Grid */
-.photo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-    padding: 20px;
-    max-width: 900px;
-    margin: 0 auto;
+/* Slideshow Container */
+.slideshow-container {
+    position: relative;
+    max-width: 800px;
+    margin: 30px auto;
+    box-shadow: 0 0 20px rgba(255, 102, 179, 0.5);
+    border-radius: 15px;
+    overflow: hidden;
 }
 
-.photo-placeholder {
+.slide-image {
     width: 100%;
-    height: 200px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: #9966cc;
-    transition: transform 0.3s, box-shadow 0.3s;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
-.photo-placeholder:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 102, 179, 0.6);
+.slide-image:hover {
+    transform: scale(1.02);
+}
+
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(255, 102, 179, 0.5);
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(255, 102, 179, 0.8);
+}
+
+/* Dots indicators */
+.dots-container {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #d9b3ff;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #ff66b3;
+}
+
+/* Fade animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
 }
 
 /* Poem Section */
@@ -70,6 +121,52 @@ h1 {
     line-height: 1.8;
 }
 
+/* Gift Box */
+.gift-container {
+    position: relative;
+    margin: 40px auto;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+
+.gift-box {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 10px rgba(255, 102, 179, 0.7));
+}
+
+.gift-box:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 15px rgba(255, 102, 179, 0.9));
+}
+
+.love-message {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: #ff3385;
+    text-shadow: 0 0 10px #ff66b3, 0 0 20px #ff66b3;
+    opacity: 0;
+    transition: all 0.5s ease;
+    white-space: nowrap;
+}
+
+.love-message.visible {
+    opacity: 1;
+    top: -120px;
+    animation: loveGlow 1.5s infinite alternate;
+}
+
+@keyframes loveGlow {
+    from { text-shadow: 0 0 10px #ff66b3, 0 0 20px #ff66b3; }
+    to { text-shadow: 0 0 20px #ff3385, 0 0 30px #ff66b3, 0 0 40px #ff99cc; }
+}
+
 /* Confetti Button */
 .confetti-btn {
     background: #ff66b3;
@@ -81,37 +178,11 @@ h1 {
     cursor: pointer;
     margin: 20px 0;
     transition: all 0.3s;
+    box-shadow: 0 0 15px rgba(255, 102, 179, 0.7);
 }
 
 .confetti-btn:hover {
     background: #ff3385;
     transform: scale(1.1);
-}
-
-/* Glowing Images */
-.glow-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover; /* Ensures images fill the space nicely */
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(255, 102, 179, 0.5); /* Soft default glow */
-}
-
-/* Hover Glow Effect */
-.glow-image:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px #ff66b3, 0 0 30px #ff99cc; /* Stronger glow */
-    filter: brightness(1.1); /* Slight brightness increase */
-}
-
-/* Optional: Pulsing Glow (for always-on magic) */
-@keyframes pulse-glow {
-    0% { box-shadow: 0 0 10px #ff66b3; }
-    50% { box-shadow: 0 0 20px #ff99cc; }
-    100% { box-shadow: 0 0 10px #ff66b3; }
-}
-
-.glow-image.pulse {
-    animation: pulse-glow 2s infinite;
+    box-shadow: 0 0 25px rgba(255, 102, 179, 0.9);
 }
