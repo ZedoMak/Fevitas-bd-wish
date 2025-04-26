@@ -1,14 +1,30 @@
 /* Modern Aesthetic Styling */
+:root {
+    --pink: #ff66b3;
+    --light-pink: #ff99cc;
+    --dark-pink: #ff3385;
+    --purple: #d9b3ff;
+    --light-purple: #e6ccff;
+    --blue: #b3e6ff;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(45deg, #ffcce6, #d9b3ff, #b3e6ff);
     background-size: 300% 300%;
-    animation: gradientBG 10s ease infinite;
+    animation: gradientBG 12s ease infinite;
     margin: 0;
     padding: 20px;
     color: #5a3d7a;
     text-align: center;
     overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 @keyframes gradientBG {
@@ -21,13 +37,17 @@ body {
 h1 {
     font-size: 3.5rem;
     margin: 30px 0;
-    text-shadow: 0 0 10px #ff66b3, 0 0 20px #ff66b3, 0 0 30px #ff66b3;
+    text-shadow: 0 0 10px var(--pink), 0 0 20px var(--pink), 0 0 30px var(--pink);
     animation: glow 2s ease-in-out infinite alternate;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
 }
 
 @keyframes glow {
-    from { text-shadow: 0 0 5px #ff66b3, 0 0 10px #ff66b3; }
-    to { text-shadow: 0 0 15px #ff99cc, 0 0 25px #ff99cc; }
+    from { text-shadow: 0 0 5px var(--pink), 0 0 10px var(--pink); }
+    to { text-shadow: 0 0 15px var(--light-pink), 0 0 25px var(--light-pink); }
 }
 
 /* Slideshow Container */
@@ -35,20 +55,23 @@ h1 {
     position: relative;
     max-width: 800px;
     margin: 30px auto;
-    box-shadow: 0 0 20px rgba(255, 102, 179, 0.5);
+    box-shadow: 0 0 30px rgba(255, 102, 179, 0.6);
     border-radius: 15px;
     overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .slide-image {
     width: 100%;
     height: 500px;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.8s ease;
 }
 
 .slide-image:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
 
 /* Next & previous buttons */
@@ -56,25 +79,33 @@ h1 {
     cursor: pointer;
     position: absolute;
     top: 50%;
-    width: auto;
+    width: 50px;
+    height: 50px;
     padding: 16px;
-    margin-top: -22px;
+    margin-top: -25px;
     color: white;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 24px;
     transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
+    border-radius: 50%;
     user-select: none;
-    background-color: rgba(255, 102, 179, 0.5);
+    background-color: rgba(255, 102, 179, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prev {
+    left: 20px;
 }
 
 .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
+    right: 20px;
 }
 
 .prev:hover, .next:hover {
-    background-color: rgba(255, 102, 179, 0.8);
+    background-color: rgba(255, 102, 179, 0.9);
+    transform: scale(1.1);
 }
 
 /* Dots indicators */
@@ -87,15 +118,17 @@ h1 {
     cursor: pointer;
     height: 15px;
     width: 15px;
-    margin: 0 5px;
-    background-color: #d9b3ff;
+    margin: 0 8px;
+    background-color: var(--light-purple);
     border-radius: 50%;
     display: inline-block;
-    transition: background-color 0.6s ease;
+    transition: all 0.6s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .active, .dot:hover {
-    background-color: #ff66b3;
+    background-color: var(--pink);
+    transform: scale(1.2);
 }
 
 /* Fade animation */
@@ -111,14 +144,30 @@ h1 {
 
 /* Poem Section */
 .poem {
-    max-width: 600px;
+    max-width: 700px;
     margin: 40px auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     font-style: italic;
     line-height: 1.8;
+    font-size: 1.2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.poem::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, var(--pink), var(--purple), var(--blue));
+    z-index: -1;
+    filter: blur(20px);
+    opacity: 0.6;
 }
 
 /* Gift Box */
@@ -128,19 +177,27 @@ h1 {
     width: 150px;
     height: 150px;
     cursor: pointer;
+    transition: all 0.5s ease;
 }
 
 .gift-box {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 0 10px rgba(255, 102, 179, 0.7));
+    transition: all 0.5s ease;
+    filter: drop-shadow(0 0 15px rgba(255, 102, 179, 0.8));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
 }
 
 .gift-box:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 15px rgba(255, 102, 179, 0.9));
+    transform: scale(1.1) rotate(-5deg);
+    filter: drop-shadow(0 0 20px rgba(255, 102, 179, 1));
 }
 
 .love-message {
@@ -148,41 +205,147 @@ h1 {
     top: -100px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 3rem;
-    color: #ff3385;
-    text-shadow: 0 0 10px #ff66b3, 0 0 20px #ff66b3;
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--dark-pink);
+    text-shadow: 0 0 15px var(--pink), 0 0 30px var(--pink);
     opacity: 0;
-    transition: all 0.5s ease;
+    transition: all 0.8s ease;
     white-space: nowrap;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
 }
 
 .love-message.visible {
     opacity: 1;
-    top: -120px;
+    top: -150px;
     animation: loveGlow 1.5s infinite alternate;
 }
 
 @keyframes loveGlow {
-    from { text-shadow: 0 0 10px #ff66b3, 0 0 20px #ff66b3; }
-    to { text-shadow: 0 0 20px #ff3385, 0 0 30px #ff66b3, 0 0 40px #ff99cc; }
+    from { 
+        text-shadow: 0 0 15px var(--pink), 0 0 30px var(--pink);
+        transform: translateX(-50%) scale(1);
+    }
+    to { 
+        text-shadow: 0 0 25px var(--dark-pink), 0 0 45px var(--pink), 0 0 60px var(--light-pink);
+        transform: translateX(-50%) scale(1.05);
+    }
 }
 
 /* Confetti Button */
 .confetti-btn {
-    background: #ff66b3;
+    background: linear-gradient(45deg, var(--pink), var(--dark-pink));
     color: white;
     border: none;
-    padding: 12px 25px;
-    font-size: 1.2rem;
+    padding: 15px 30px;
+    font-size: 1.3rem;
     border-radius: 50px;
     cursor: pointer;
-    margin: 20px 0;
-    transition: all 0.3s;
-    box-shadow: 0 0 15px rgba(255, 102, 179, 0.7);
+    margin: 30px 0;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 20px rgba(255, 102, 179, 0.7);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.confetti-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--dark-pink), var(--pink));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .confetti-btn:hover {
-    background: #ff3385;
     transform: scale(1.1);
-    box-shadow: 0 0 25px rgba(255, 102, 179, 0.9);
+    box-shadow: 0 0 30px rgba(255, 102, 179, 0.9);
+}
+
+.confetti-btn:hover::before {
+    opacity: 1;
+}
+
+/* Floating Hearts */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--pink);
+    transform: rotate(45deg);
+    opacity: 0;
+}
+
+.heart::before, .heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--pink);
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: -10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+        padding: 15px;
+    }
+    
+    .slideshow-container {
+        max-width: 90%;
+    }
+    
+    .slide-image {
+        height: 300px;
+    }
+    
+    .poem {
+        padding: 20px;
+        font-size: 1rem;
+        max-width: 90%;
+    }
+    
+    .love-message {
+        font-size: 2.5rem;
+        top: -120px;
+    }
+    
+    .gift-container {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .confetti-btn {
+        padding: 12px 25px;
+        font-size: 1.1rem;
+    }
 }

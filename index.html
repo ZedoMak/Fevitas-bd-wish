@@ -8,47 +8,52 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h1>Happy Birthday Fevita! ✨</h1>
-    
-    <!-- Slideshow Container -->
-    <div class="slideshow-container">
-        <div class="slides fade">
-            <img src="images/fevita1.jpg" alt="Fevita" class="slide-image">
+    <div class="container">
+        <h1>Happy Birthday Fevita! ✨</h1>
+        
+        <!-- Slideshow Container -->
+        <div class="slideshow-container">
+            <div class="slides fade">
+                <img src="assets/fevita4.jpg" alt="Fevita" class="slide-image">
+            </div>
+            <div class="slides fade">
+                <img src="assets/fevita2.jpg" alt="Fevita" class="slide-image">
+            </div>
+            <div class="slides fade">
+                <img src="assets/fevita3.jpg" alt="Fevita" class="slide-image">
+            </div>
+            <div class="slides fade">
+                <img src="assets/fevita5.jpg" alt="Fevita" class="slide-image">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
         </div>
-        <div class="slides fade">
-            <img src="images/fevita2.jpg" alt="Fevita" class="slide-image">
+        <br>
+        <div class="dots-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
         </div>
-        <div class="slides fade">
-            <img src="images/fevita3.jpg" alt="Fevita" class="slide-image">
-        </div>
-        <div class="slides fade">
-            <img src="images/fevita4.jpg" alt="Fevita" class="slide-image">
-        </div>
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
-    </div>
-    <br>
-    <div class="dots-container">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-    </div>
 
-    <div class="poem">
-        <p>Roses are red, violets are blue,</p>
-        <p>But nothing compares to how amazing you are—it's true!</p>
-        <p>May your day sparkle with joy so bright,</p>
-        <p>Like stars that dance in the velvet night. ✨</p>
-    </div>
+        <div class="poem">
+            <p>To the most beautiful soul I know,</p>
+            <p>May your birthday be as radiant as your smile,</p>
+            <p>As warm as your heart,</p>
+            <p>And as magical as your presence in my life. ✨</p>
+        </div>
 
-    <!-- Gift Box -->
-    <div class="gift-container">
-        <img src="images/gift-box.jpg" alt="Gift Box" class="gift-box" id="giftBox">
-        <div class="love-message" id="loveMessage">I LOVE YOU</div>
-    </div>
+        <!-- Gift Box -->
+        <div class="gift-container">
+            <img src="assets/gift-box.jpg" alt="Gift Box" class="gift-box" id="giftBox">
+            <div class="love-message" id="loveMessage">I LOVE YOU</div>
+        </div>
 
-    <button class="confetti-btn">Click for Confetti! 🎉</button>
+        <button class="confetti-btn">Shower Me With Love! 🎉</button>
+        
+        <!-- Floating Hearts -->
+        <div class="hearts-container"></div>
+    </div>
 
     <!-- Confetti JS -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
