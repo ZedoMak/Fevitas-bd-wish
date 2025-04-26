@@ -87,3 +87,31 @@ h1 {
     background: #ff3385;
     transform: scale(1.1);
 }
+
+/* Glowing Images */
+.glow-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Ensures images fill the space nicely */
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 102, 179, 0.5); /* Soft default glow */
+}
+
+/* Hover Glow Effect */
+.glow-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #ff66b3, 0 0 30px #ff99cc; /* Stronger glow */
+    filter: brightness(1.1); /* Slight brightness increase */
+}
+
+/* Optional: Pulsing Glow (for always-on magic) */
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 10px #ff66b3; }
+    50% { box-shadow: 0 0 20px #ff99cc; }
+    100% { box-shadow: 0 0 10px #ff66b3; }
+}
+
+.glow-image.pulse {
+    animation: pulse-glow 2s infinite;
+}
