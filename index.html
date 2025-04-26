@@ -78,7 +78,7 @@
         <h1 class="password-title">Enter the Magic Word</h1>
         <p>To unlock Fevita's special birthday surprise 🎀</p>
         
-        <input type="password" id="passwordInput" class="password-input" placeholder="Hint: It's how you feel about her">
+        <input type="password" id="passwordInput" class="password-input" placeholder="Hint: Dingay ras misemashin tsafi">
         <button onclick="checkPassword()" class="password-btn">Unlock the Magic ✨</button>
         
         <div class="hint" onclick="showHint()">Need a hint?</div>
@@ -87,7 +87,7 @@
 
     <script>
         function checkPassword() {
-            const passwords = ["fevita", "love", "forever", "birthday", "amor"]; // Add more if needed
+            const passwords = ["fevita", "love", "forever", "birthday", "amor"]; 
             const input = document.getElementById("passwordInput").value.toLowerCase();
             
             if (passwords.includes(input)) {
